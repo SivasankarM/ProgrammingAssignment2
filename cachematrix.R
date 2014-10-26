@@ -6,13 +6,25 @@
 ## for its inverse
 makeCacheMatrix <- function(x = matrix()) {
     i <- NULL
+    ## Function to set the input matrix and the inverse to NULL, so whenever the
+    ## matrix is updated using set function, the inverse can be recalculated.
     set <- function(y) {
         x <<- y
         i <<- NULL
     }
+
+    ## Function to get the input matrix
     get <- function() x
+    
+    ## Function to set the inverse matrix to i
     setinverse <- function(inverse) i <<- inverse
+    
+    ## Function to get the inverse matrix 
     getinverse <- function() i
+    
+    ## The list vector containing functions to set and get input matrix and 
+    ## functions to set and get the inverse matrix. This special list vector is 
+    ## returned from the function
     list(set = set, get = get,
          setinverse = setinverse,
          getinverse = getinverse)
